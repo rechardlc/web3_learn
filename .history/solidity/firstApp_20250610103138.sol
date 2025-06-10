@@ -1,4 +1,0 @@
-pragma solidity ;
-contract Counter {
-
-}

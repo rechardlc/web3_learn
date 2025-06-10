@@ -10,7 +10,6 @@ This is a learner with web3 about learning information
 1. hardhat
 ### 案例
 
-
 ## 学习资料
 1. [北京大学《区块链技术与应用》公开课](https://juejin.cn/post/7138072108516507661)
 2. solidity
@@ -37,3 +36,7 @@ openzeppelin、turffle、nextjs、ethersjs、wagmi
 
 1. [web3-examples](https://github.com/luzhenqian/web3-examples)
 2. [NextJs-Wagmi-QuickStart](https://github.com/0xverin/Nextjs-Wagmi-QuickStart)
+
+
+### 学习计划
+1. 跟着[soildty-by-example](https://solidity-by-example.org/),将基本例子跑完
