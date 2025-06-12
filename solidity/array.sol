@@ -17,6 +17,7 @@ contract Array {
     uint[] public nums;
     uint[10] public nums2;
     uint[10] public nums3 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    uint[2][3] public nums4 = [[1, 2], [3, 4], [5, 6]]; // 二维数组中：[2][3]表示3行2列， 大部分其他语言表示2行3列
     // push 添加元素，对于非动态的数组，不能添加元素
     function push(uint _num) public {
         nums.push(_num);
@@ -34,3 +35,12 @@ contract Array {
         return nums.length;
     }
 }
+/*
+
+    EVM虚拟机本质是一个栈结构：遵循先进后出原则
+    对于数组其中一个元素的删除，采用迭代的方式删除，
+    for(uint i = index; i < arr.length -1; i++) {
+        arr[i] = arr[i+1]
+    }
+    arr.pop() // 最后一个元素采用pop弹出
+*/

@@ -1,6 +1,9 @@
 # web3_learn
 This is a learner with web3 about learning information
 
+## 目标
+### 一个合格的Dapp、智能合约工程师
+
 ## 学习路线
 ### 语言
 1. typescript、solidity、rust
