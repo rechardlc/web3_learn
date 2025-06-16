@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>web.js</title>
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+</head>
+<body>
+    <div>
+        <button>link mask</button>
+    </div>
+    <script>
+        const web3 = new Web3(Web3.givenProvider || "http://127.0.0.1:8545");
+        const button = document.querySelector('button');
+        button.addEventListener('click', () => {
+            web3Test();
+        });
+        async function web3Test() {
+            const account = await web3.eth.getAccounts()
+            console.log(account)
+        }
+    </script>
+</body>
+</html>
