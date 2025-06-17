@@ -17,11 +17,12 @@ contract HelloWorld {
 
 
 contract SimpleToken {
+    // 声明一个mapping数据类型名称为balances，key为address，value为uint256，表示地址和金额
     mapping(address => uint256) public balances;
-    string public name;
-    string public symbol;
-    uint8 public decimals;
-    uint256 public totalSupply;
+    string public name; // 声明一个可任意访问的名称
+    string public symbol; // 声明一个可任意访问的符号
+    uint8 public decimals;  // 声明一个可以任意访问的小数
+    uint256 public totalSupply; // 声明一个可以任意访问的累计供应量
 
     event Transfer(address indexed form, address indexed to, uint256 value);
     // 在合约创建时被执行（init）
@@ -35,6 +36,7 @@ contract SimpleToken {
         symbol = _symbol;
         decimals = _decimals;
         totalSupply = _initialSupply;
+        // msg内置读取对象
         balances[msg.sender] = _initialSupply;
     }
     function transfer(address _to, uint256 _value) public retruns (bool) {
