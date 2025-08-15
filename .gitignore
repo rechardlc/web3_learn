@@ -26,3 +26,8 @@ replay_pid*
 # ide
 .history
 .idea
+
+*/node_modules/
+*/.idea/
+*/.vscode/
+*/.history/
