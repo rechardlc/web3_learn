@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  # Redis 服务
+  redis:
+    image: redis:latest
+    container_name: redis-notes
+    ports:
+      - "6379:6379"
+    volumes:
+      # 数据持久化
+      - ./redis/data:/data
+      # Redis 配置文件
+      - ./redis/conf/redis.conf:/usr/local/etc/redis/redis.conf
+    command: redis-server /usr/local/etc/redis/redis.conf
+    restart: unless-stopped
+    networks:
+      - notes-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Next.js 应用服务（可选，用于生产环境）
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: next-notes-app
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - REDIS_URL=redis://redis:6379
+    depends_on:
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+    networks:
+      - notes-network
+    profiles:
+      - production
+
+networks:
+  notes-network:
+    driver: bridge
+
+volumes:
+  redis-data:
+    driver: local

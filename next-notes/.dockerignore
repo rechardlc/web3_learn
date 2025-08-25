@@ -1,0 +1,92 @@
+# 依赖
+node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# 构建输出
+.next
+out
+dist
+
+# 环境变量
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# 日志
+*.log
+
+# 运行时数据
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# 覆盖率目录
+coverage
+*.lcov
+
+# nyc 测试覆盖率
+.nyc_output
+
+# 依赖目录
+jspm_packages/
+
+# TypeScript 缓存
+*.tsbuildinfo
+
+# 可选 npm 缓存目录
+.npm
+
+# 可选 eslint 缓存
+.eslintcache
+
+# 微包
+.pnp
+.pnp.js
+
+# 测试
+coverage
+
+# 生产构建
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# local env files
+.env*.local
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# Git
+.git
+.gitignore
+
+# Docker
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# 文档
+README.md
+*.md
+
+# 开发工具
+.vscode
+.idea

@@ -1,0 +1,57 @@
+/* 主样式文件 */
+$primary-spacing: 10px;
+$border-radius: 8px;
+$transition-duration: 0.3s;
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: $primary-spacing;
+  padding: $primary-spacing;
+  border-radius: $border-radius;
+  transition: all $transition-duration ease;
+  cursor: pointer;
+  border: 1px solid #00000010;
+  margin-bottom: $primary-spacing;
+  position: relative;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background-color: #00000010;
+  }
+  .expand {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    width: 30px;
+    height: 30px;
+    background-color: var(--primary-blue);
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transform: rotate(90deg);
+    line-height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    transition: all $transition-duration ease;
+    color: white;
+    &.active {
+      transform: rotate(270deg);
+    }
+  }
+}
+.editButton {
+   width: 120px;
+   height: 40px;
+   background-color: var(--primary-blue);
+   border: none;
+   border-radius: 10px;
+   color: white;
+   cursor: pointer;
+   transition: all $transition-duration ease;
+   &:hover {
+    background-color: var(--primary-blue-hover);
+   }
+}
