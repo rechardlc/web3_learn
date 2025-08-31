@@ -6,6 +6,7 @@ import EditButton from "@/components/editButton";
 import NoteListSkeleton from "@/components/noteListSkeleton";
 import SidebarSearchField from "@/components/SidebarSearchField";
 import { useTranslation } from "@/i18n/index"
+import SidebarImport from "@/components/SidebaImport";
 export default async function Sidebar({ lng }) {
   const { t } = await useTranslation(lng, 'basic')
   // const notes = await getAllNotes();
@@ -18,7 +19,15 @@ export default async function Sidebar({ lng }) {
             <strong>React Notes</strong>
         </section>
       </Link>
-      <section className="sidebar-menu" role="menubar">
+      <section className="sidebar-menu" style={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '10px',
+        alignItems: 'flex-start',
+        justifyContent: 'flex-start',
+        padding: '10px',
+      }} role="menubar">
+      <SidebarImport />
       <SidebarSearchField />
         <EditButton noteId={null}>
           <span>{t('new')}</span>

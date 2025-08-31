@@ -1,4 +1,5 @@
 import "@/styles/index.css";
+import Header from "@/components/Header";
 import Sidebar from "@/components/Sidebar";
 import { Footer } from "@/components/Footer";
 import { locales } from "@/config"
@@ -12,6 +13,7 @@ export default async function RootLayout({ children, params }) {
     <html lang="en">
       <body>
         <div className="container">
+          <Header />
           <div className="main">
             <Sidebar lng={lng} />
             <section className="col note-viewer">

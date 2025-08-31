@@ -15,3 +15,9 @@ docker run -d \
 2. Suspense 的效果就是允许你推迟渲染某些内容，直到满足某些条件（例如数据加载完毕）。在
 开发 Next.js 项目的时候，有数据加载的地方多考虑是否可以使用 
 Suspense 或者 loading.js带来更好的体验。
+
+
+
+## 相关重要依赖
+1. Prisma(ORM[object relational mapping])
+  - ORM 将数据管理方式改变对象方式处理

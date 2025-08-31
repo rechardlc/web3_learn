@@ -9,7 +9,8 @@
       "@/types/*": ["./src/types/*"],
       "@/styles/*": ["./src/styles/*"],
       "@/actions/*": ["./src/app/[lng]/actions.js"],
-      "@/i18n/*": ["./src/app/i18n/*"]
+      "@/i18n/*": ["./src/app/i18n/*"],
+      "auth": ["./auth.js"]
     }
   }
 }
