@@ -1,6 +1,6 @@
 import prisma from "@/lib/prisma";
 import { currentUser } from "@clerk/nextjs/server";
-import { type List } from "@/generated/prisma";
+import { type Task, type List } from "@/generated/prisma";
 import {
   Card,
   CardContent,
@@ -12,13 +12,16 @@ import CheckListFooter from "@/components/CheckListFooter";
 
 import { cn } from "@/lib/utils";
 import { ListMap } from "@/lib/const";
+import TaskItem from "@/components/TaskItem";
 
 interface Props {
-  checkList: List;
+  checkList: List & {
+    tasks: Task[];
+  };
 }
 
 function CheckList({ checkList }: Props) {
-  const { name, color } = checkList;
+  const { name, color, tasks } = checkList;
 
   return (
     <Card
@@ -29,7 +32,14 @@ function CheckList({ checkList }: Props) {
         <CardTitle>{name}</CardTitle>
       </CardHeader>
       <CardContent>
-        <p>任务列表</p>
+        {tasks.length === 0 && <p>目前没有任务</p>}
+        {tasks.length > 0 && (
+          <div>
+            {tasks.map((task) => {
+              return <TaskItem key={task.id} task={task} />;
+            })}
+          </div>
+        )}
       </CardContent>
       <CardFooter className="flex-col pb-2">
         <CheckListFooter checkList={checkList} />
@@ -40,8 +50,10 @@ function CheckList({ checkList }: Props) {
 
 export async function CheckLists() {
   const user = await currentUser();
-  // 直接查List表了。。。。
   const checkLists = await prisma.list.findMany({
+    include: {
+      tasks: true,
+    },
     where: {
       userId: user?.id,
     },
@@ -53,17 +65,7 @@ export async function CheckLists() {
 
   return (
     <>
-      <div
-        className="grid 
-                    grid-cols-2 
-                    sm:grid-cols-3 
-                    md:grid-cols-4 
-                    lg:grid-cols-5 
-                    xl:grid-cols-6 
-                    gap-4 
-                    auto-rows-fr 
-                    max-h-[calc(4*(100px+1rem))] mt-4 w-full"
-      >
+      <div className="mt-6 flex w-full flex-col gap-4">
         {checkLists.map((checkList) => (
           <CheckList key={checkList.id} checkList={checkList} />
         ))}

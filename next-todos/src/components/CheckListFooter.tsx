@@ -17,7 +17,7 @@ import { Trash2, CirclePlus } from "lucide-react";
 import { type List } from "@/generated/prisma";
 import { deleteList } from "@/actions/list";
 import { toast } from "sonner";
-
+import CreateTaskModal from './CreateTaskModal';
 interface Props {
   checkList: List;
 }
@@ -40,9 +40,7 @@ export default function CheckListFooter({ checkList }: Props) {
       <footer className="flex h-[60px] w-full items-center justify-between text-sm text-white">
         <p>创建于 {createdAt.toLocaleDateString("zh-CN")}</p>
         <div>
-          <Button className="cursor-pointer" size={"icon"} variant={"ghost"}>
-            <CirclePlus />
-          </Button>
+          <CreateTaskModal checkList={checkList}/>
           <AlertDialog>
             <AlertDialogTrigger asChild>
               <Button
