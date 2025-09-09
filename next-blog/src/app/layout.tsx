@@ -1,5 +1,8 @@
 import siteMetadata from "@/data/siteMetadata";
-import ThemeSwitch from "@/components/ThemeSwitch";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import SectionContainer from "@/components/SectionContainer";
+import { ThemeProvider } from "next-themes";
 import "./globals.css";
 
 export const metadata = {
@@ -44,12 +47,15 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang={siteMetadata.locale}>
-      <body>
-        <header className="flex justify-end p-4">
-          <ThemeSwitch />
-        </header>
-        <section>{children}</section>
+    <html lang={siteMetadata.locale} suppressHydrationWarning>
+      <body className="bg-white text-black antialiased dark:bg-gray-950 dark:text-white">
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <SectionContainer>
+            <Header />
+            <main className="mb-auto">{children}</main>
+          </SectionContainer>
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );
